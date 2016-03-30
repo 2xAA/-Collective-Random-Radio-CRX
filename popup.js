@@ -15,9 +15,6 @@ function htmlDecode(string) {
 
 var $ = document;
 
-/* Settings load and save */
-var settings = loadSettings();
-
 function loadSettings() {
 	chrome.runtime.sendMessage({settings: 'get'}, function(response) {
 		settings = response;
@@ -29,6 +26,10 @@ function saveSettings() {
 		console.log('Settings saved', response);
 	});
 }
+
+/* Settings load and save */
+var settings;
+loadSettings();
 
 $.addEventListener('DOMContentLoaded', boot, false);
 
@@ -89,7 +90,8 @@ function boot() {
 		info: {},
 		player: {},
 		settings: {
-			lastfm: {}
+			lastfm: {},
+			mediakeys: {}
 		}
 	};
 
@@ -279,6 +281,13 @@ function boot() {
 
 	});
 
+	/* UI -> Settings-> Use Media Keys */
+	ui.settings.mediakeys.checkbox		= $.querySelector('#useMediaKeys');
+
+	ui.settings.mediakeys.checkbox.addEventListener('change', function() {
+		settings.mediakeys = this.checked;
+		saveSettings();
+	});
 
 	/* UI -> Settings-> Last.fm */
 	ui.settings.lastfm.wrap				= $.querySelector('#lastfm');

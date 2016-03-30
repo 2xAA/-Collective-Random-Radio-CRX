@@ -114,7 +114,7 @@ function audioFade(el, cb) {
 	}, 1000/60);
 }
 
-var settings = JSON.parse(localStorage.getItem('settings')) || localStorage.setItem('settings', JSON.stringify({notifications: true, visuals: true})), settings = JSON.parse(localStorage.getItem('settings'));
+var settings = JSON.parse(localStorage.getItem('settings')) || localStorage.setItem('settings', JSON.stringify({notifications: true, visuals: true, mediakeys: true})), settings = JSON.parse(localStorage.getItem('settings'));
 var notification;
 var cIndex = -1;
 var trackList = [];
@@ -434,6 +434,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	/* Media key bindings */
 	chrome.commands.onCommand.addListener(function(command) {
+		if(!settings.mediakeys) return;
+
 		switch(command) {
 			case 'playpause':
 				playPause(function(data) {

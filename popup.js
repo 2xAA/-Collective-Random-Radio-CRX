@@ -314,7 +314,12 @@ function boot() {
 
 	ui.settings.lastfm.scrobbleRange.addEventListener('mouseup', function() {
 		ui.settings.lastfm.arrow.classList.remove('visible');
+		settings.scrobbleperc = this.value;
+		saveSettings();
 	}, false);
+
+	ui.settings.lastfm.scrobbleRange.value = settings.scrobbleperc;
+	ui.settings.lastfm.scrobblePerc.innerHTML = settings.scrobbleperc;
 
 	ui.settings.lastfm.signIn.addEventListener('click', function(e) {
 		e.preventDefault();

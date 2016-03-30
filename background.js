@@ -114,7 +114,7 @@ function audioFade(el, cb) {
 	}, 1000/60);
 }
 
-var settings = JSON.parse(localStorage.getItem('settings')) || localStorage.setItem('settings', JSON.stringify({notifications: true, visuals: true, mediakeys: true})), settings = JSON.parse(localStorage.getItem('settings'));
+var settings = JSON.parse(localStorage.getItem('settings')) || localStorage.setItem('settings', JSON.stringify({notifications: true, visuals: true, mediakeys: true, scrobbleperc: 40})), settings = JSON.parse(localStorage.getItem('settings'));
 var notification;
 var cIndex = -1;
 var trackList = [];
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		scrobbleReady = false;
 
 	function lfmTimerFN() {
-		if(audio.currentTime > ((40 / 100) * audio.duration)) {
+		if(audio.currentTime > ((settings.scrobbleperc / 100) * audio.duration)) {
 			scrobbleReady = true;
 			clearInterval(lfmTimer);
 			return;
@@ -164,6 +164,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	var next = function(cb) {
 		clearTimeout(timeInterval);
+
+		if(scrobbleReady && lfmsess !== null) {
+			LastFM.scrobble(trackList[cIndex].author, trackList[cIndex].title, function() {
+				scrobbleReady = false;
+			});
+		}
+
 		audioFade(audio, function() {
 			audio.currentTime = 0;
 			audio.paused = true;
@@ -210,6 +217,12 @@ document.addEventListener('DOMContentLoaded', function() {
 			return;
 		}
 		clearTimeout(timeInterval);
+
+		if(scrobbleReady && lfmsess !== null) {
+			LastFM.scrobble(trackList[cIndex].author, trackList[cIndex].title, function() {
+				scrobbleReady = false;
+			});
+		}
 
 		if(audio.currentTime < 2) {
 
@@ -274,12 +287,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	};
 
 	audio.addEventListener('ended', function() {
-		if(scrobbleReady && lfmsess !== null) {
-			LastFM.scrobble(trackList[cIndex].author, trackList[cIndex].title, function() {
-				scrobbleReady = false;
-			});
-		}
-
 		next(function(data) {
 			chrome.runtime.sendMessage({data: data}, function() {});
 		});
@@ -428,7 +435,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			width = (width/2) - 255;
 			height = (height/2) - 355;
 
-			chrome.windows.create({url: 'changelog.html', type: 'popup', left: width, top: height, width: 510, height: 710}, function() {});
+			chrome.windows.create({url: 'changelog.html', type: 'popup', left: Math.round(width), top: Math.round(height), width: 510, height: 710}, function() {});
 		}
 	});
 

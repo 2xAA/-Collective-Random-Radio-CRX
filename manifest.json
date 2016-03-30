@@ -1,0 +1,49 @@
+{
+  "manifest_version": 2,
+
+  "name": "µCollective Radio",
+  "description": "Random radio player for µCollective.org",
+  "author": "Sam Wray",
+  "version": "1.0.0.0",
+
+   "externally_connectable": {
+      "matches": [ "*://*.ucollective.org/*" ]
+   },
+
+   "browser_action": {
+      "default_icon": "icon.png",
+      "default_popup": "popup.html",
+      "default_title": "Nothing playing!"
+   },
+
+  "background": {
+      "page": "background.html",
+      "persistent": true
+   },
+
+   "permissions": ["http://ucollective.org/", "notifications"],
+
+   "commands": {
+      "playpause": {
+         "suggested_key": {
+            "default": "MediaPlayPause"
+         },
+         "description": "Play/Pause playback",
+         "global": true
+      },
+      "prev": {
+         "suggested_key": {
+            "default": "MediaPrevTrack"
+         },
+         "description": "Play previous track",
+         "global": true
+      },
+      "next": {
+         "suggested_key": {
+            "default": "MediaNextTrack"
+         },
+         "description": "Play next track",
+         "global": true
+      }
+   }
+}

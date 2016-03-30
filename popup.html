@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Getting Started Extension's Popup</title>
+		<link rel="stylesheet" href="popup.css">
+		<script src="popup.js"></script>
+	</head>
+	<body>
+		<canvas></canvas>
+		<div id="wrap">
+			<div id="info">
+				<div class="inwrap">
+					<div id="title"></div>
+					<div id="author"></div>
+				</div>
+				<div id="av">
+					<img id="avatar" src="" />
+				</div>
+				<div id="description">
+					<!--YO-->
+				</div>
+			</div>
+			<div id="userinfo">
+				<div id="uiname"></div>
+				<div id="uidesc">Loading...</div>
+			</div>
+			<div id="settings">
+				<h4>Settings</h4>
+				<form>
+					<fieldset>
+						<label>Visuals: <input type="checkbox" id="visuals" checked=""></label>
+						<!-- <label>Visualisation (disabled):
+							<select disabled id="visSelect">
+								<option value="0">Normal</option>
+								<option value="1">(*) Colourful</option>
+								<option value="3">Time</option>
+								<option value="2">(*)(!) Glitch</option>
+							</select><br>
+							<small>(*) = flashing images | </small>
+							<small>(!) = CPU hog</small>
+						</label> -->
+
+						<label>
+							Fullscreen:
+							<input type="button" id="fullscreen" value="Fullscreen">
+						</label>
+						
+						<!-- <label>
+							Quake level (disabled): <span id="quakeval"></span>
+							<input disabled type="range" id="quake" min="1" max="200" value="200">
+						</label>
+						 -->
+						<label>Notifications: <input type="checkbox" id="notifications" checked=""></label>
+
+						<h4>Scrobble to last.fm:</h4>
+						<label class="lfm-user"><input type="text" id="lfm-user" placeholder="Username" /></label>
+						<label class="lfm-pass"><input type="password" id="lfm-pass" placeholder="Password" /></label>
+						<label class="lfm-signin"><button id="lfm-signin">Sign in</button><span id="lfm-error"></label>
+						<label>
+							Scrobble point adjust:
+							<input type="range" id="lfm-scblperc" min="30" max="100" value="40"><br>
+							<small>Scrobble when <span id="scblperc">40</span>% played</small>
+						</label>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+
+		<div id="button-wrap">
+			<div class="button previous"></div>
+			<div id="playPause" class="button stop"></div>
+			<div class="button next"></div>
+			<div class="button menu"></div>
+			<div class="button link"></div>
+			<div id="timebwrap">
+				<div id="lfm-arrow"></div>
+				<div id="timerbar">
+					<div id="ball">
+						<div id="timeover"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

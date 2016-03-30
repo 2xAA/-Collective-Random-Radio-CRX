@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>&micro;Collective Radio Changelog</title>
+		<style>
+			body {
+				font-size: 14px;
+				font-family: monospace;
+				padding: 100px 0 0 0;
+				position: relative;
+			}
+
+			#top {
+				background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 30%,rgba(255,255,255,0) 100%);
+				height: 100px;
+				margin: 0;
+				padding: 1em 0 0 0;
+				position: fixed;
+				top: 0;
+			}
+
+			ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			ul li:before {
+				content: '☞';
+				margin: 0 0.6em 0 0.2em;
+			}
+
+			ul li {
+				margin: 14px;
+			}
+		</style>
+	</head>
+	<body>
+		<pre id="top">
+★----------------------------------------------------------★
+★                µCollective Radio v<span id="version">       </span>                ★
+★----------------------------------------------------------★
+          ☢ - known bug | ✐ - feature to be added
+		</pre>
+<ul>
+<li>Hit version 1</li>
+<li>Refactored all of the code, completely new code base.</li>
+<li>Added media key support</li>
+<li>Now missing visual choices</li>
+<li>✐ Still need to make the Last.fm scrobble length work</li>
+<li>✐ Still can't favourite tracks yet, working on it though</li>
+</ul>
+<hr><b>Version 0.0.1.4</b>
+<ul>
+<li>Worked more on the fullscreen mode</li>
+<li>Next version: refactored code.</li>
+</ul>
+<hr><b>Version 0.0.1.3</b>
+<ul>
+<li>Stopped the autoplay on browser start, sorry about that.</li>
+<li>Added experimental fullscreen.</li>
+<li>Seemed to have fixed the extension crash for now, but the visuals still don't autostart on the first song for some reason.</li>
+</ul>
+<hr><b>Version 0.0.1.2</b>
+<ul>
+<li>Fixed the breakage due to the API release.</li>
+<li>I'll try and spare some time to update this when I can, sorry guys - v. busy with life right now.</li>
+</ul>
+<hr><b>Version 0.0.1.1</b>
+<ul>
+<li>Added LastFM support (woooo)</li>
+<li>MORE CROSS ORIGIN STUFF. Gravatar this time though</li>
+<li>The Cross Origin stuff I just mentioned fixed most of the notifications, some bugs still to squish there however</li>
+<li>☢ @admung on Twitter pointed out a bug when you first start the CRX about 10 seconds in it will crash. At first I thought it was to do with the visuals not loading at startup, but I've fixed that and it still crashes. For now, open the CRX, hit play, close it and reopen. I'm looking into it but have't found a way to fix it yet, sorry ☹</li>
+<li>Also @admung noticed scroll bars, I'm on Mac so I did't notice them, I've removed them!</li>
+<li>✐ Found a way to favourite tracks, but that'll be in the next version.</li>
+</ul>
+<hr><b>Version 0.0.0.9:</b>
+<ul>
+<li>More cross-origin stuff due to switching µC over to SSL</li>
+<li>Fixed things to do with notifications not loading images over HTTPS</li>
+<li>Added timer bar seek functionality</li>
+<li>Added small loading animation</li>
+<li>✐ Preliminarily linked to the player on µC itself</li>
+</ul>
+<hr><b>Version 0.0.0.8:</b>
+<ul>
+<li>Fixed some cross-origin stuff due to switching µC over to SSL</li>
+<li>That's it.</li>
+</ul>
+<hr><b>Version 0.0.0.7:</b>
+<ul>
+<li>Added glitch visual control</li>
+<li>Optimised timer messages to reduce CPU usage</li>
+<li>✐ Added timer bar, yet to add seeking capability</li>
+</ul>
+<pre>
+
+Is't ASCII fun? ☺
+-Sam ✌</pre>
+		<script src="changelog.js"></script>
+	</body>
+</html>
